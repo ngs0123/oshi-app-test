@@ -5,7 +5,7 @@ let collapsed=new Set(JSON.parse(localStorage.getItem(COLLAPSE_KEY)||'[]').map(S
 function saveCollapsed(){localStorage.setItem(COLLAPSE_KEY,JSON.stringify([...collapsed]))}
 function toolsOpen(){return localStorage.getItem(TOOL_KEY)==='1'}
 function setToolsOpen(v){localStorage.setItem(TOOL_KEY,v?'1':'0')}
-function esc3=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const esc3=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 function axes3(){try{return JSON.parse(localStorage.getItem('oshiCategoryAxes')||'[]')}catch{return []}}
 function axis3(id){return axes3().find(a=>String(a.id)===String(id))}
 function node3(a,id){return (a?.nodes||[]).find(n=>String(n.id)===String(id))}
